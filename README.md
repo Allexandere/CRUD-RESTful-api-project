@@ -65,11 +65,11 @@
 
   `GET`
   
-*  **URL Params**
+* **URL Params**
 
   **Required.**
   
-  'id=[string]'
+   'id=[string]'
 
 * **Success Response:**
 
@@ -100,6 +100,62 @@
 * **Sample Call:**
 
   `api/get_student?id=1`
+ 
+ ---
+ 
+* **/create_student**
+
+  Без параметров возвращает всех студентов, иначе возвращает результат соответствующих запросов к БД.
+
+* **Method:**
+
+  `POST`
+  
+* **Data Params**
+
+  `"{firstName": "Ivan",
+    "lastName": "Ivanov",
+    "age": 19,
+    "rating": 8.21,
+    "mail": "ivan@mail.ru"}` 
+
+* **Success Response:**
+
+  Возвращает созданный объект-студента с присвоенным id.
+
+  * **Code:** 200 <br />
+    **Content:**  `{"id": 1,
+    "firstName": "Ivan",
+    "lastName": "Ivanov",
+    "age": 19,
+    "rating": 8.21,
+    "mail": "ivan@mail.ru"}` 
+ 
+* **Error Response:**
+
+  Если один или несколько из параметров указаны неверно возвращает ошибку 400.<br/>
+
+  * **Code:** 400 <br />
+    **Content:** `["Rating must be in [0, 10] and can't be null.
+  First name size must be in [1, 100] and can't be null. 
+  Last name size must be in [1, 100] and can't be null.
+  Age must be in [1, 120] and can't be null.
+  Student with this mail already exists."]`
+
+* **Sample Call:**
+
+  `api/create_student'
+  
+  `body = {
+    "firstName": "Ivan",
+    "lastName": "Ivanov",
+    "age": 19,
+    "rating": 8.21,
+    "mail": "ivan@mail.ru"}`
+
+* **Notes:**
+
+ Ограничения на параметры описаны в примере с ошибкой.
  
  ---
  
