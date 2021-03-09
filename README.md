@@ -29,7 +29,8 @@
   * **Code:** 200 <br />
     **Content:** `[]`
     
-    `[
+  * **Code:** 200 <br />
+    **Content:**  `[
     {"id": 1,
     "firstName": "Ivan",
     "lastName": "Ivanov",
