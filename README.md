@@ -59,7 +59,7 @@
  
 * **/get_student**
 
-  Без параметров возвращает всех студентов, иначе возвращает результат соответствующих запросов к БД.
+  Возвращает студента с указанным id.
 
 * **Method:**
 
@@ -95,7 +95,7 @@
   Если студента с указанным id нет возвращает ошибку 404.
 
   * **Code:** 404 <br />
-    **Content:** `{"No student with such id"}`
+    **Content:** `"No student with such id"`
 
 * **Sample Call:**
 
@@ -105,7 +105,7 @@
  
 * **/create_student**
 
-  Без параметров возвращает всех студентов, иначе возвращает результат соответствующих запросов к БД.
+  Создаёт студента в БД.
 
 * **Method:**
 
@@ -113,11 +113,11 @@
   
 * **Data Params**
 
-  `"{firstName": "Ivan",
-    "lastName": "Ivanov",
-    "age": 19,
-    "rating": 8.21,
-    "mail": "ivan@mail.ru"}` 
+  `"{firstName": [string],
+    "lastName": "[string]",
+    "age": [integer],
+    "rating": [double],
+    "mail": "[string]"}` 
 
 * **Success Response:**
 
@@ -152,11 +152,122 @@
     "age": 19,
     "rating": 8.21,
     "mail": "ivan@mail.ru"}`
-
-* **Notes:**
-
- Ограничения на параметры описаны в примере с ошибкой.
  
  ---
+  
+* **/update_student**
+
+  Без параметров возвращает всех студентов, иначе возвращает результат соответствующих запросов к БД.
+
+* **Method:**
+
+  `POST`
+  
+* **URL Params**
+
+  **Required.**
+  
+   'id=[string]'
+  
+* **Data Params**
+
+  `"{firstName": [string],
+    "lastName": [string],
+    "age": [integer],
+    "rating": [double],
+    "mail": "[string]"}` 
+
+* **Success Response:**
+
+  Возвращает обновлённый объект-студента.
+
+  * **Code:** 200 <br />
+    **Content:**  `{"id": 1,
+    "firstName": "Vladimir",
+    "lastName": "Vladimirovich",
+    "age": 20,
+    "rating": 9.21,
+    "mail": "vladimir@mail.ru"}` 
+ 
+* **Error Response:**
+
+  Если один или несколько из параметров указаны неверно возвращает ошибку 400.<br/>
+  * **Code:** 400 <br />
+    **Content:** `["Rating must be in [0, 10] and can't be null.
+  First name size must be in [1, 100] and can't be null. 
+  Last name size must be in [1, 100] and can't be null.
+  Age must be in [1, 120] and can't be null.
+  Student with this mail already exists."]`
+  
+  Если id указан неверно возвращает ошибку 400.<br/>
+  * **Code:** 400 <br />
+    **Content:** `"Invalid id"`
+  
+  Если студента с указанным id нет, возвращает 404.
+  * **Code:** 404 <br />
+    **Content:**
+
+* **Sample Call:**
+
+  `api/update_student?id=1'
+  
+  `body = {
+    "firstName": "Vladimir",
+    "lastName": "Vladimirovich",
+    "age": 19,
+    "rating": 8.21,
+    "mail": "vladimir@mail.ru"}`
+ 
+ ---
+   
+* **/delete_student**
+
+  Удаляет студента с указанным id из базы данных.
+
+* **Method:**
+
+  `DELETE`
+  
+* **URL Params**
+
+  **Required.**
+  
+   'id=[string]'
+ 
+* **Success Response:**
+
+  Возвращает удалённый объект-студента.
+
+  * **Code:** 200 <br />
+    **Content:**  `{"id": 1,
+    "firstName": "Vladimir",
+    "lastName": "Vladimirovich",
+    "age": 20,
+    "rating": 9.21,
+    "mail": "vladimir@mail.ru"}` 
+ 
+* **Error Response:**
+
+  Если id указан неверно возвращает ошибку 400.<br/>
+
+  * **Code:** 400 <br />
+    **Content:** `"Invalid id"`
+    
+  Если студента с указанным id нет, возвращает 404.
+  
+  * **Code:** 404 <br />
+    **Content:** `"No student with such id"`
+
+* **Sample Call:**
+
+  `api/update_student?id=1'
+  
+  `body = {
+    "firstName": "Vladimir",
+    "lastName": "Vladimirovich",
+    "age": 19,
+    "rating": 8.21,
+    "mail": "vladimir@mail.ru"}`
+ 
  
  **TO BE CONTINUED**
