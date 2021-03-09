@@ -41,7 +41,11 @@
  
 * **Error Response:**
 
-  Безопасный метод, ошибок не вызывает.
+  Если один из параметров указан неверно возвращает ошибку 400.
+
+  * **Code:** 400 <br />
+    **Content:** `[{"status": 400,
+    "error": "Bad Request"}]`
 
 * **Sample Call:**
 
@@ -50,6 +54,52 @@
 * **Notes:**
 
  Если параметр пустой, то он игнорируется.
+ 
+ ---
+ 
+* **/get_student**
+
+  Без параметров возвращает всех студентов, иначе возвращает результат соответствующих запросов к БД.
+
+* **Method:**
+
+  `GET`
+  
+*  **URL Params**
+
+  **Required.**
+  
+  'id=[string]'
+
+* **Success Response:**
+
+  Возвращает студента с указанным id.
+    
+  * **Code:** 200 <br />
+    **Content:**  `[
+    {"id": 1,
+    "firstName": "Ivan",
+    "lastName": "Ivanov",
+    "age": 19,
+    "rating": 8.21,
+    "mail": "ivan@mail.ru"}
+    ]` 
+ 
+* **Error Response:**
+
+  Если id указан неверно возвращает ошибку 400.
+
+  * **Code:** 400 <br />
+    **Content:** `{"Invalid id"}`
+    
+  Если студента с указанным id нет возвращает ошибку 404.
+
+  * **Code:** 404 <br />
+    **Content:** `{"No student with such id"}`
+
+* **Sample Call:**
+
+  `api/get_student?id=1`
  
  ---
  
