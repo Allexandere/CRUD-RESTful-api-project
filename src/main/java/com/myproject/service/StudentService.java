@@ -23,7 +23,7 @@ public class StudentService {
     }
 
     public Student getStudent(String id) {
-        return studentRepository.getStudent(Long.getLong(id));
+        return studentRepository.getStudent(id);
     }
 
     public Student createStudent(Student student){

@@ -49,7 +49,7 @@ public class StudentRepository implements org.springframework.data.repository.Re
         return entityManager.createQuery(query).getResultList();
     }
 
-    public Student getStudent(Long id) {
+    public Student getStudent(String id) {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Student> query = builder.createQuery(Student.class);
         Root<Student> root = query.from(Student.class);
