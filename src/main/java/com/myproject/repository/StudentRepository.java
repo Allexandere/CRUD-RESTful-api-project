@@ -66,7 +66,7 @@ public class StudentRepository implements org.springframework.data.repository.Re
     }
 
     public Student updateStudent(Student student) {
-        Student updateStudent = entityManager.find(Student.class, student);
+        Student updateStudent = entityManager.find(Student.class, student.getId());
         if (updateStudent == null)
             return null;
         if (StringUtils.isNotEmpty(student.getFirstName()))
