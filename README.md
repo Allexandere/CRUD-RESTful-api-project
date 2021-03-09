@@ -67,7 +67,7 @@
   
 * **URL Params**
 
-  **Required.**
+  **Required:**
   
    'id=[string]'
 
@@ -90,7 +90,7 @@
   Если id указан неверно возвращает ошибку 400.
 
   * **Code:** 400 <br />
-    **Content:** `{"Invalid id"}`
+    **Content:** `"Invalid id"`
     
   Если студента с указанным id нет возвращает ошибку 404.
 
@@ -165,7 +165,7 @@
   
 * **URL Params**
 
-  **Required.**
+  **Required:**
   
    'id=[string]'
   
@@ -230,7 +230,7 @@
   
 * **URL Params**
 
-  **Required.**
+  **Required:**
   
    'id=[string]'
  
