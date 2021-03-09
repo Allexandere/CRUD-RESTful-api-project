@@ -28,7 +28,7 @@ public class StudentRepository implements org.springframework.data.repository.Re
         List<Predicate> predicates = new ArrayList<>();
 
         if (StringUtils.isNotEmpty(studentRequest.getName()))
-            predicates.add(builder.like(root.get("name"), new StringBuilder("%").append(studentRequest.getName()).append("%").toString()));
+            predicates.add(builder.like(root.get("firstName"), new StringBuilder("%").append(studentRequest.getName()).append("%").toString()));
         if (StringUtils.isNotEmpty(studentRequest.getLastName()))
             predicates.add(builder.like(root.get("lastName"), new StringBuilder("%").append(studentRequest.getLastName()).append("%").toString()));
         if (StringUtils.isNotEmpty(studentRequest.getMail()))
