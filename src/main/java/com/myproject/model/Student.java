@@ -3,11 +3,12 @@ package com.myproject.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @Entity
 @Table(name = "students")
-public class Student {
+public class Student implements Serializable {
 
     private static final long serialVersionUID = -1L;
 
