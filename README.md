@@ -7,7 +7,11 @@
 **Запуск:**<br />
 
   Запуск осуществляется при помощи docker-compose:<br />
-  `docker-compose up`
+  ```
+  git clone https://github.com/Allexandere/CRUD-RESTful-api-project.git
+  cd CRUD-RESTful-api-project/
+  docker-compose up
+  ```
 
 **Требования к данным:**<br />
   `name - длина от 1 до 100 включительно`<br />
